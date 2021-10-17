@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 00%, rgb(0, 195, 255) 600%);
+}
+
+h1 { 
+  padding: 1rem 1rem;
+}
+
+form {
+  width: 360px;
+}
+label p {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.add {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
+  padding: 0.5rem 0.5rem;
+  width: 20%;
+  margin-left: 0.5rem;
+  border-radius: 25px;
+  border: 1px solid rgba(81, 203, 238, 1);
+  outline: none;
+  box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+  background-color: rgba(81, 203, 238, 1);
+  font-weight: 600;
+  color: white;
+}
+
+.add:hover {
+  box-shadow: 0 0 20px rgba(81, 203, 238, 1);
+}
+
+.todo-input {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 0.5rem 0.5rem;
+  width: 70%;
+  border-radius: 25px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+ 
+.todo-input:focus {
+  box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+  padding: 0.5rem 0.5rem;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+div.result {
+  width: 360px;
+}
+
+ul.todo-list {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+li.todo-li {
+  display: flex;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+li.done-todo {
+  color: rgb(228, 228, 228);
+}
+
+div.text-container {
+  width: 85%;
+}
+
+div.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+button.delete-button {
+  -webkit-transition: all 0.20s ease-in-out;
+  -moz-transition: all 0.20s ease-in-out;
+  -ms-transition: all 0.20s ease-in-out;
+  -o-transition: all 0.20s ease-in-out;
+  transition: all 0.20s ease-in-out;
+  padding: 0.1rem 0.5rem 0.2rem;
+  background-color: red;
+  box-shadow: 0 0 5px rgb(255, 48, 48);
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+}
+
+button.delete-button:hover {
+  border: 1px red solid;
+  box-shadow: 0 0 10px rgb(255, 48, 48);
+}
+
+p.created-date {
+  font-size: 0.7rem;
+  color: rgb(167, 167, 167);
+}
+p.todo-text {
+  padding: 0.5rem;
+}

@@ -26,7 +26,7 @@ const createLi = (id, created, todo) => {
   li.classList.add('todo-li');
   textContainerDiv.classList.add('text-container');
   buttonContainerDiv.classList.add('button-container');
-  dateParagraph.classList.add('creted-date');
+  dateParagraph.classList.add('created-date');
   todoParagraph.classList.add('todo-text');
   checkboxInput.classList.add('input-checkbox');
   deleteButton.classList.add('delete-button');
@@ -69,9 +69,9 @@ const createLi = (id, created, todo) => {
       const { updated, done } = data;
   
       if(done) {
-        console.log('dodaj klasę');
+        e.target.parentNode.parentNode.classList.add('done-todo');
       } else {
-        console.log('odejmij klasę');
+        e.target.parentNode.parentNode.classList.remove('done-todo');
       }
       
     } catch (error) {
