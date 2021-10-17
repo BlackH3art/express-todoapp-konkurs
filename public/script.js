@@ -40,7 +40,7 @@ const createLi = (id, created, todo) => {
   deleteButton.addEventListener('click', async (e) => {
     
     try {
-      const result = await fetch(`/delete/${id}`, {
+      const result = await fetch(`/todo/delete/${id}`, {
         method: "DELETE",
       });
 
@@ -61,7 +61,7 @@ const createLi = (id, created, todo) => {
 
     try {
 
-      const result = await fetch(`/checked/${id}`, {
+      const result = await fetch(`/todo/checked/${id}`, {
         method: "PATCH",
       });
   
@@ -91,7 +91,7 @@ form.addEventListener('submit', async (e) => {
   const todoValue = todoInput.value;
   const createdDate = new Date();
 
-  const result = await fetch('/add', {
+  const result = await fetch('/todo/add', {
     method: "POST",
     body: JSON.stringify({
       created: createdDate.toLocaleString(),
@@ -119,7 +119,7 @@ form.addEventListener('submit', async (e) => {
   ul.innerText = "Wczytywanie.."
 
   try {
-    const result = await fetch('/get-todos');
+    const result = await fetch('/todo/get-todos');
   
     const data = await result.json();
     ul.innerText = "";
