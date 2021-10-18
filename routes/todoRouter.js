@@ -22,17 +22,30 @@ todoRouter
     try {
       const db = await readFile('./db.json', 'utf8');
       const dbObject = JSON.parse(db);
+
+      const { todo } = req.body;
     
-      dbObject.todos.push(req.body);
+      if(todo === '') {
+
+        res.status(400).json({ error: "Nie zostało wprowadzone żadne zadanie."})
+      } else if (todo.length >= 36) {
+        res.status(400).json({ error: "To lista zadań, nie pamiętnik! Za dużo znaków."})
+      } else {
+
+        dbObject.todos.push(req.body);
+        
+        const todosWithIDs = dbObject.todos.map((todo, index) => ({id: Math.ceil(2152352195 * index * Math.random()), ...todo}))
       
-      const todosWithIDs = dbObject.todos.map((todo, index) => ({id: Math.ceil(2152352195 * index * Math.random()), ...todo}))
-    
-      const todosJSON = JSON.stringify({ todos: todosWithIDs });
-    
-      await writeFile('./db.json', todosJSON);
+        const todosJSON = JSON.stringify({ todos: todosWithIDs });
       
-      const addedTodoIndex = todosWithIDs.length - 1;
-      res.status(201).json(todosWithIDs[addedTodoIndex]);
+        await writeFile('./db.json', todosJSON);
+        
+        const addedTodoIndex = todosWithIDs.length - 1;
+
+        console.log(todosWithIDs[addedTodoIndex]); // zwracam dodane todo
+        res.status(201).json(todosWithIDs[addedTodoIndex]);
+
+      }
       
     } catch (error) {
       console.log(error);

@@ -91,26 +91,50 @@ form.addEventListener('submit', async (e) => {
   const todoValue = todoInput.value;
   const createdDate = new Date();
 
-  const result = await fetch('/todo/add', {
-    method: "POST",
-    body: JSON.stringify({
-      created: createdDate.toLocaleString(),
-      todo: todoValue,
-      done: false,
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  try {
+    const result = await fetch('/todo/add', {
+      method: "POST",
+      body: JSON.stringify({
+        created: createdDate.toLocaleString(),
+        todo: todoValue,
+        done: false,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    const data = await result.json();
   
-  const data = await result.json();
-  console.log(data);
+    const isThereErrorAlready = document.querySelector('.info-error');
+  
+    if(data.error) {
+      isThereErrorAlready?.remove();
 
-  const { id, created, todo } = data
-  const newTodo = createLi(id, created, todo);
+      todoInput.classList.add('input-error');
+  
+      const errorParagraph = document.createElement('p');
+      errorParagraph.classList.add('info-error');
+  
+      errorParagraph.innerText = data.error;
+  
+      form.appendChild(errorParagraph);
+  
+    } else {
+      isThereErrorAlready?.remove();
 
-  ul.appendChild(newTodo);
-
+      todoInput.classList.remove('input-error');
+      
+      const { id, created, todo } = data
+      const newTodo = createLi(id, created, todo);
+    
+      ul.appendChild(newTodo);
+      todoInput.value = '';
+    }
+    
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 
